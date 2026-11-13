@@ -2,15 +2,9 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// ------------------ WIFI ------------------
-const char* ssid = "WIFI_KAMU";
-const char* password = "PASSWORD_WIFI";
+const char* ssid = "Vivo Y17s";
+const char* password = "Aditiaaaa";
 
-// ------------------ API LPR ------------------
-String api_key = "API_KEY_OPENALPR_KAMU";
-String upload_url = "https://api.openalpr.com/v3/recognize_bytes?recognize_vehicle=0&country=id&secret_key=" + api_key;
-
-// ------------------ CAMERA PIN ------------------
 #define PWDN_GPIO_NUM    32
 #define RESET_GPIO_NUM   -1
 #define XCLK_GPIO_NUM     0
@@ -31,7 +25,6 @@ String upload_url = "https://api.openalpr.com/v3/recognize_bytes?recognize_vehic
 void setup() {
   Serial.begin(115200);
 
-  // WIFI
   WiFi.begin(ssid, password);
   Serial.print("Connecting");
   while (WiFi.status() != WL_CONNECTED) {
@@ -40,7 +33,6 @@ void setup() {
   }
   Serial.println("Connected!");
 
-  // CAMERA CONFIG
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
@@ -94,5 +86,5 @@ void loop() {
   http.end();
   esp_camera_fb_return(fb);
 
-  delay(5000); // Foto tiap 5 detik
+  delay(5000); 
 }
